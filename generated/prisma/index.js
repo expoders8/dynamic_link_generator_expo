@@ -157,7 +157,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\HP\\Downloads\\dynamic-link-generator\\generated\\prisma",
+      "value": "D:\\Projects\\dynamic_link_generator_expo\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -171,7 +171,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\HP\\Downloads\\dynamic-link-generator\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\Projects\\dynamic_link_generator_expo\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
