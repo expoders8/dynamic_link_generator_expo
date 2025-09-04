@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  domain      String
+  androidPkg  String?   @map("androidPkg")
+  iosBundleId String?   @map("iosBundleId")
+  iosAppStore String?   @map("iosAppStore")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  links       Link[]
+}
+
+model Link {
+  id          Int      @id @default(autoincrement())
+  shortId     String   @unique
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id])
+  deepLink    String
+  fallbackUrl String?
+  meta        Json?
+  clickCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+}

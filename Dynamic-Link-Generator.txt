@@ -1,0 +1,49 @@
+Step: 1 
+-----------------------------------------------------------------------------------
+
+INSERT INTO "Project" (id, name, domain, "androidPkg", "iosBundleId", "iosAppStore", "createdAt", "updatedAt")
+VALUES (
+  'expo_openhouse',
+  'OpenHouse App',
+  'https://869ef7923f25.ngrok-free.app',
+  'com.openuniverse.openhouse',
+  'com.openuniverse.openhouse',
+  'https://apps.apple.com/in/app/openhouse-stay-managed/id6739276086',
+  NOW(),
+  NOW()
+);
+
+Step: 2
+------------------------------------------------------------------------------------
+
+http://localhost:3000/api/expo_openhouse/links
+POST
+
+Request : 	{
+			  "projectId": "expo_openhouse",
+			  "deepLink": "com.openuniverse.openhouse://property/1234",
+			  "fallbackUrl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
+			  "meta": {
+				"title": "Property #1234",
+				"description": "Beautiful 2BHK flat in Mumbai",
+				"image": "https://picsum.photos/400"
+			  }
+			}
+		
+Response :  {
+				"id": 2,
+				"shortId": "qg7JBb9E",
+				"projectId": "expo_openhouse",
+				"deepLink": "com.openuniverse.openhouse://property/1234",
+				"fallbackUrl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
+				"meta": {
+					"image": "https://picsum.photos/400",
+					"title": "Property #1234",
+					"description": "Beautiful 2BHK flat in Mumbai"
+				},
+				"clickCount": 0,
+				"createdAt": "2025-09-04T08:49:47.456Z"
+			}
+			
+----------------------------------------------------------------------------------
+Link : 	https://869ef7923f25.ngrok-free.app/s/qg7JBb9E <- shortId
