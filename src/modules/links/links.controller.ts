@@ -6,8 +6,15 @@ export class LinksController {
   @Post()
   async create(@Param("projectSlug") projectSlug: any, @Body() body: any) {
     // NOTE: In scaffold we accept projectId in body for simplicity.
-    const { projectId, deepLink, fallbackUrl, meta } = body;
-    return this.links.create(projectId, deepLink, fallbackUrl, meta);
+    const { projectId, deepLink, androidredirecturl, webRedirectUrl, meta } =
+      body;
+    return this.links.create(
+      projectId,
+      deepLink,
+      androidredirecturl,
+      webRedirectUrl,
+      meta,
+    );
   }
   @Get(":shortId")
   async get(@Param("shortId") shortId: any) {

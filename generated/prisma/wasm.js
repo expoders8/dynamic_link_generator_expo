@@ -126,7 +126,7 @@ exports.Prisma.ProjectScalarFieldEnum = {
   domain: 'domain',
   androidPkg: 'androidPkg',
   iosBundleId: 'iosBundleId',
-  iosAppStore: 'iosAppStore',
+  iosredirecturl: 'iosredirecturl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -136,7 +136,8 @@ exports.Prisma.LinkScalarFieldEnum = {
   shortId: 'shortId',
   projectId: 'projectId',
   deepLink: 'deepLink',
-  fallbackUrl: 'fallbackUrl',
+  androidredirecturl: 'androidredirecturl',
+  webRedirectUrl: 'webRedirectUrl',
   meta: 'meta',
   clickCount: 'clickCount',
   createdAt: 'createdAt'

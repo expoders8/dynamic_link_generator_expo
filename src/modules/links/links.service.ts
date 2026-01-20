@@ -4,10 +4,29 @@ import { PrismaService } from "../../prisma/prisma.service";
 @Injectable()
 export class LinksService {
   constructor(private prisma: PrismaService) {}
-  async create(projectId: any, deepLink: any, fallbackUrl = null, meta: any) {
+  // async create(projectId: any, deepLink: any, androidredirecturl = null, meta: any) {
+  //   const shortId = nanoid(8);
+  //   return this.prisma.link.create({
+  //     data: { projectId, deepLink, androidredirecturl, meta, shortId },
+  //   });
+  // }
+  async create(
+    projectId: string,
+    deepLink: string,
+    androidredirecturl: string | null,
+    webRedirectUrl: string | null, // ✅ NEW
+    meta: any,
+  ) {
     const shortId = nanoid(8);
     return this.prisma.link.create({
-      data: { projectId, deepLink, fallbackUrl, meta, shortId },
+      data: {
+        projectId,
+        deepLink,
+        androidredirecturl,
+        webRedirectUrl,
+        meta,
+        shortId,
+      },
     });
   }
   async findByShortId(shortId: any) {

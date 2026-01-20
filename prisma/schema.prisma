@@ -14,7 +14,7 @@ model Project {
   domain      String
   androidPkg  String?   @map("androidPkg")
   iosBundleId String?   @map("iosBundleId")
-  iosAppStore String?   @map("iosAppStore")
+  iosredirecturl String?   @map("iosredirecturl")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -27,7 +27,8 @@ model Link {
   projectId   String
   project     Project  @relation(fields: [projectId], references: [id])
   deepLink    String
-  fallbackUrl String?
+  androidredirecturl String?
+  webRedirectUrl String?
   meta        Json?
   clickCount  Int      @default(0)
   createdAt   DateTime @default(now())

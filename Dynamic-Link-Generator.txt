@@ -1,7 +1,7 @@
 Step: 1 
 -----------------------------------------------------------------------------------
 
-INSERT INTO "Project" (id, name, domain, "androidPkg", "iosBundleId", "iosAppStore", "createdAt", "updatedAt")
+INSERT INTO "Project" (id, name, domain, "androidPkg", "iosBundleId", "iosredirecturl", "createdAt", "updatedAt")
 VALUES (
   'expo_openhouse',
   'OpenHouse App',
@@ -22,7 +22,7 @@ POST
 Request : 	{
 			  "projectId": "expo_openhouse",
 			  "deepLink": "com.openuniverse.openhouse://property/1234",
-			  "fallbackUrl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
+			  "androidredirecturl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
 			  "meta": {
 				"title": "Property #1234",
 				"description": "Beautiful 2BHK flat in Mumbai",
@@ -35,7 +35,7 @@ Response :  {
 				"shortId": "qg7JBb9E",
 				"projectId": "expo_openhouse",
 				"deepLink": "com.openuniverse.openhouse://property/1234",
-				"fallbackUrl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
+				"androidredirecturl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
 				"meta": {
 					"image": "https://picsum.photos/400",
 					"title": "Property #1234",
@@ -53,7 +53,7 @@ curl --location 'https://7be0d1c447ee.ngrok-free.app/api/expo_openhouse/links' \
 --data '{
 	    "projectId": "expo_hired",
 	    "deepLink": "dev.app.hiredhealth://login",
-	    "fallbackUrl": "https://play.google.com/store/apps/details?id=dev.app.hiredhealth",
+	    "androidredirecturl": "https://play.google.com/store/apps/details?id=dev.app.hiredhealth",
 	    "meta": {
             "title": "login #1234",
             "description": "Beautiful 2BHK flat in Mumbai",

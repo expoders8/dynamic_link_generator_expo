@@ -9,26 +9,27 @@ datasource db {
 }
 
 model Project {
-  id          String   @id @default(cuid())
-  name        String
-  domain      String
-  androidPkg  String?  @map("androidPkg")
-  iosBundleId String?  @map("iosBundleId")
-  iosAppStore String?  @map("iosAppStore")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(cuid())
+  name           String
+  domain         String
+  androidPkg     String?  @map("androidPkg")
+  iosBundleId    String?  @map("iosBundleId")
+  iosredirecturl String?  @map("iosredirecturl")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   links Link[]
 }
 
 model Link {
-  id          Int      @id @default(autoincrement())
-  shortId     String   @unique
-  projectId   String
-  project     Project  @relation(fields: [projectId], references: [id])
-  deepLink    String
-  fallbackUrl String?
-  meta        Json?
-  clickCount  Int      @default(0)
-  createdAt   DateTime @default(now())
+  id                 Int      @id @default(autoincrement())
+  shortId            String   @unique
+  projectId          String
+  project            Project  @relation(fields: [projectId], references: [id])
+  deepLink           String
+  androidredirecturl String?
+  webRedirectUrl     String?
+  meta               Json?
+  clickCount         Int      @default(0)
+  createdAt          DateTime @default(now())
 }

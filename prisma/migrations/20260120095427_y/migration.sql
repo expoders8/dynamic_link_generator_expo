@@ -5,7 +5,7 @@ CREATE TABLE "public"."Project" (
     "domain" TEXT NOT NULL,
     "androidPkg" TEXT,
     "iosBundleId" TEXT,
-    "iosAppStore" TEXT,
+    "iosredirecturl" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -18,7 +18,7 @@ CREATE TABLE "public"."Link" (
     "shortId" TEXT NOT NULL,
     "projectId" TEXT NOT NULL,
     "deepLink" TEXT NOT NULL,
-    "fallbackUrl" TEXT,
+    "androidredirecturl" TEXT,
     "meta" JSONB,
     "clickCount" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

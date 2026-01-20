@@ -21,6 +21,7 @@ export class RedirectController {
     const ua = req.headers["user-agent"] || "";
     const isAndroid = /Android/i.test(ua);
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isDesktop = !isAndroid && !isIOS;
 
     // --- Extract scheme from deepLink (myapp:// → "myapp")
     const schemeMatch = link.deepLink.match(/^([a-zA-Z0-9+.-]+):\/\//);
@@ -32,7 +33,7 @@ export class RedirectController {
       const intentUrl = `intent://${deepPath}#Intent;scheme=${
         scheme || "https"
       };package=${link.project.androidPkg};S.browser_fallback_url=${
-        link.fallbackUrl ||
+        link.androidredirecturl ||
         `https://play.google.com/store/apps/details?id=${link.project.androidPkg}`
       };end;`;
 
@@ -52,7 +53,7 @@ export class RedirectController {
               window.location = "${link.deepLink}";
               setTimeout(function() {
                 window.location = "${
-                  link.project.iosAppStore || link.fallbackUrl || ""
+                  link.project.iosredirecturl || link.androidredirecturl || ""
                 }";
               }, 2000);
             }
@@ -67,9 +68,12 @@ export class RedirectController {
       return res.send(html);
     }
 
-    // --- Desktop / other
-    return res.redirect(
-      link.fallbackUrl || link.project.iosAppStore || link.deepLink,
-    );
+    if (isDesktop) {
+      return res.redirect(
+        link.webRedirectUrl ||
+          link.androidredirecturl ||
+          "https://your-default-website.com",
+      );
+    }
   }
 }
