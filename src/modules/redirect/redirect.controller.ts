@@ -10,7 +10,7 @@ export class RedirectController {
   async redirect(
     @Param("shortId") shortId: string,
     @Req() req: Request,
-    @Res() res: Response
+    @Res() res: Response,
   ) {
     const link = await this.linksService.findByShortId(shortId);
     if (!link) return res.status(404).send("Not found");
@@ -69,7 +69,7 @@ export class RedirectController {
 
     // --- Desktop / other
     return res.redirect(
-      link.fallbackUrl || link.project.iosAppStore || link.deepLink
+      link.fallbackUrl || link.project.iosAppStore || link.deepLink,
     );
   }
 }

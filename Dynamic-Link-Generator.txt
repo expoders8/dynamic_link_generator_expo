@@ -46,4 +46,21 @@ Response :  {
 			}
 			
 ----------------------------------------------------------------------------------
+PostMan cURL
+
+curl --location 'https://7be0d1c447ee.ngrok-free.app/api/expo_openhouse/links' \
+--header 'Content-Type: application/json' \
+--data '{
+	    "projectId": "expo_hired",
+	    "deepLink": "dev.app.hiredhealth://login",
+	    "fallbackUrl": "https://play.google.com/store/apps/details?id=dev.app.hiredhealth",
+	    "meta": {
+            "title": "login #1234",
+            "description": "Beautiful 2BHK flat in Mumbai",
+            "image": "https://picsum.photos/400"
+	    }
+}'
+
+
+-----------------------------------------------------------------------------------------------
 Link : 	https://869ef7923f25.ngrok-free.app/s/qg7JBb9E <- shortId
