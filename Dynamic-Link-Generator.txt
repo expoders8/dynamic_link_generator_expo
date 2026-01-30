@@ -1,7 +1,7 @@
 Step: 1 
 -----------------------------------------------------------------------------------
 
-INSERT INTO "Project" (id, name, domain, "androidPkg", "iosBundleId", "iosAppStore", "createdAt", "updatedAt")
+INSERT INTO "Project" (id, name, domain, "androidPkg", "iosBundleId", "iosredirecturl", "createdAt", "updatedAt")
 VALUES (
   'expo_openhouse',
   'OpenHouse App',
@@ -23,11 +23,6 @@ Request : 	{
 			  "projectId": "expo_openhouse",
 			  "deepLink": "com.openuniverse.openhouse://property/1234",
 			  "fallbackUrl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
-			  "meta": {
-				"title": "Property #1234",
-				"description": "Beautiful 2BHK flat in Mumbai",
-				"image": "https://picsum.photos/400"
-			  }
 			}
 		
 Response :  {
@@ -36,11 +31,6 @@ Response :  {
 				"projectId": "expo_openhouse",
 				"deepLink": "com.openuniverse.openhouse://property/1234",
 				"fallbackUrl": "https://play.google.com/store/apps/details?id=com.openuniverse.openhouse",
-				"meta": {
-					"image": "https://picsum.photos/400",
-					"title": "Property #1234",
-					"description": "Beautiful 2BHK flat in Mumbai"
-				},
 				"clickCount": 0,
 				"createdAt": "2025-09-04T08:49:47.456Z"
 			}

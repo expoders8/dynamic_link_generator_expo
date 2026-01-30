@@ -10,11 +10,11 @@ datasource db {
 
 model Project {
   id          String   @id @default(cuid())
+  userId      String   @db.Uuid
   name        String
-  domain      String
-  androidPkg  String?   @map("androidPkg")
-  iosBundleId String?   @map("iosBundleId")
-  iosAppStore String?   @map("iosAppStore")
+  androidPkg  String?
+  iosBundleId String?
+  iosredirecturl String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -27,8 +27,8 @@ model Link {
   projectId   String
   project     Project  @relation(fields: [projectId], references: [id])
   deepLink    String
-  fallbackUrl String?
-  meta        Json?
+  androidredirecturl String?
+  webRedirectUrl String?
   clickCount  Int      @default(0)
   createdAt   DateTime @default(now())
 }

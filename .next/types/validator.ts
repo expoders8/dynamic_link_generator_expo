@@ -4,13 +4,82 @@
 
 
 
+type PagesPageConfig = {
+  default: React.ComponentType<any> | ((props: any) => React.ReactNode | Promise<React.ReactNode> | never | void)
+  getStaticProps?: (context: any) => Promise<any> | any
+  getStaticPaths?: (context: any) => Promise<any> | any
+  getServerSideProps?: (context: any) => Promise<any> | any
+  getInitialProps?: (context: any) => Promise<any> | any
+  /**
+   * Segment configuration for legacy Pages Router pages.
+   * Validated at build-time by parsePagesSegmentConfig.
+   */
+  config?: {
+    amp?: boolean | 'hybrid' | string // necessary for JS
+    maxDuration?: number
+    runtime?: 'edge' | 'experimental-edge' | 'nodejs' | string // necessary unless config is exported as const
+    regions?: string[]
+  }
+}
+
+type ApiRouteConfig = {
+  default: (req: any, res: any) => Promise<Response | void> | Response | void
+  config?: {
+    api?: {
+      bodyParser?: boolean | { sizeLimit?: string }
+      responseLimit?: string | number | boolean
+      externalResolver?: boolean
+    }
+    runtime?: 'edge' | 'experimental-edge' | 'nodejs' | string // necessary unless config is exported as const
+    maxDuration?: number
+  }
+}
 
 
 
 
 
 
+// Validate ../../src/pages/_app.tsx
+{
+  const handler = {} as typeof import("../../src/pages/_app.js")
+  handler satisfies PagesPageConfig
+}
 
+// Validate ../../src/pages/auth.tsx
+{
+  const handler = {} as typeof import("../../src/pages/auth.js")
+  handler satisfies PagesPageConfig
+}
 
+// Validate ../../src/pages/dashboard.tsx
+{
+  const handler = {} as typeof import("../../src/pages/dashboard.js")
+  handler satisfies PagesPageConfig
+}
+
+// Validate ../../src/pages/index.tsx
+{
+  const handler = {} as typeof import("../../src/pages/index.js")
+  handler satisfies PagesPageConfig
+}
+
+// Validate ../../src/pages/api/[projectId]/links.ts
+{
+  const handler = {} as typeof import("../../src/pages/api/[projectId]/links.js")
+  handler satisfies ApiRouteConfig
+}
+
+// Validate ../../src/pages/api/links.ts
+{
+  const handler = {} as typeof import("../../src/pages/api/links.js")
+  handler satisfies ApiRouteConfig
+}
+
+// Validate ../../src/pages/api/s/[shortId].ts
+{
+  const handler = {} as typeof import("../../src/pages/api/s/[shortId].js")
+  handler satisfies ApiRouteConfig
+}
 
 

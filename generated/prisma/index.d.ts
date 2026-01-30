@@ -219,8 +219,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.15.0
-   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+   * Prisma Client JS version: 6.19.2
+   * Query Engine version: c2990dca591cba766e3b7ef5d9e8a84796e47ab7
    */
   export type PrismaVersion = {
     client: string
@@ -233,6 +233,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -849,6 +850,10 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -989,33 +994,33 @@ export namespace Prisma {
 
   export type ProjectMinAggregateOutputType = {
     id: string | null
+    userId: string | null
     name: string | null
-    domain: string | null
     androidPkg: string | null
     iosBundleId: string | null
-    iosAppStore: string | null
+    iosredirecturl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ProjectMaxAggregateOutputType = {
     id: string | null
+    userId: string | null
     name: string | null
-    domain: string | null
     androidPkg: string | null
     iosBundleId: string | null
-    iosAppStore: string | null
+    iosredirecturl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ProjectCountAggregateOutputType = {
     id: number
+    userId: number
     name: number
-    domain: number
     androidPkg: number
     iosBundleId: number
-    iosAppStore: number
+    iosredirecturl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1024,33 +1029,33 @@ export namespace Prisma {
 
   export type ProjectMinAggregateInputType = {
     id?: true
+    userId?: true
     name?: true
-    domain?: true
     androidPkg?: true
     iosBundleId?: true
-    iosAppStore?: true
+    iosredirecturl?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type ProjectMaxAggregateInputType = {
     id?: true
+    userId?: true
     name?: true
-    domain?: true
     androidPkg?: true
     iosBundleId?: true
-    iosAppStore?: true
+    iosredirecturl?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type ProjectCountAggregateInputType = {
     id?: true
+    userId?: true
     name?: true
-    domain?: true
     androidPkg?: true
     iosBundleId?: true
-    iosAppStore?: true
+    iosredirecturl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1130,11 +1135,11 @@ export namespace Prisma {
 
   export type ProjectGroupByOutputType = {
     id: string
+    userId: string
     name: string
-    domain: string
     androidPkg: string | null
     iosBundleId: string | null
-    iosAppStore: string | null
+    iosredirecturl: string | null
     createdAt: Date
     updatedAt: Date
     _count: ProjectCountAggregateOutputType | null
@@ -1158,11 +1163,11 @@ export namespace Prisma {
 
   export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     name?: boolean
-    domain?: boolean
     androidPkg?: boolean
     iosBundleId?: boolean
-    iosAppStore?: boolean
+    iosredirecturl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     links?: boolean | Project$linksArgs<ExtArgs>
@@ -1171,38 +1176,38 @@ export namespace Prisma {
 
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     name?: boolean
-    domain?: boolean
     androidPkg?: boolean
     iosBundleId?: boolean
-    iosAppStore?: boolean
+    iosredirecturl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     name?: boolean
-    domain?: boolean
     androidPkg?: boolean
     iosBundleId?: boolean
-    iosAppStore?: boolean
+    iosredirecturl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectScalar = {
     id?: boolean
+    userId?: boolean
     name?: boolean
-    domain?: boolean
     androidPkg?: boolean
     iosBundleId?: boolean
-    iosAppStore?: boolean
+    iosredirecturl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "domain" | "androidPkg" | "iosBundleId" | "iosAppStore" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "androidPkg" | "iosBundleId" | "iosredirecturl" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     links?: boolean | Project$linksArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
@@ -1217,11 +1222,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      userId: string
       name: string
-      domain: string
       androidPkg: string | null
       iosBundleId: string | null
-      iosAppStore: string | null
+      iosredirecturl: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["project"]>
@@ -1649,11 +1654,11 @@ export namespace Prisma {
    */
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'String'>
+    readonly userId: FieldRef<"Project", 'String'>
     readonly name: FieldRef<"Project", 'String'>
-    readonly domain: FieldRef<"Project", 'String'>
     readonly androidPkg: FieldRef<"Project", 'String'>
     readonly iosBundleId: FieldRef<"Project", 'String'>
-    readonly iosAppStore: FieldRef<"Project", 'String'>
+    readonly iosredirecturl: FieldRef<"Project", 'String'>
     readonly createdAt: FieldRef<"Project", 'DateTime'>
     readonly updatedAt: FieldRef<"Project", 'DateTime'>
   }
@@ -2113,7 +2118,8 @@ export namespace Prisma {
     shortId: string | null
     projectId: string | null
     deepLink: string | null
-    fallbackUrl: string | null
+    androidredirecturl: string | null
+    webRedirectUrl: string | null
     clickCount: number | null
     createdAt: Date | null
   }
@@ -2123,7 +2129,8 @@ export namespace Prisma {
     shortId: string | null
     projectId: string | null
     deepLink: string | null
-    fallbackUrl: string | null
+    androidredirecturl: string | null
+    webRedirectUrl: string | null
     clickCount: number | null
     createdAt: Date | null
   }
@@ -2133,8 +2140,8 @@ export namespace Prisma {
     shortId: number
     projectId: number
     deepLink: number
-    fallbackUrl: number
-    meta: number
+    androidredirecturl: number
+    webRedirectUrl: number
     clickCount: number
     createdAt: number
     _all: number
@@ -2156,7 +2163,8 @@ export namespace Prisma {
     shortId?: true
     projectId?: true
     deepLink?: true
-    fallbackUrl?: true
+    androidredirecturl?: true
+    webRedirectUrl?: true
     clickCount?: true
     createdAt?: true
   }
@@ -2166,7 +2174,8 @@ export namespace Prisma {
     shortId?: true
     projectId?: true
     deepLink?: true
-    fallbackUrl?: true
+    androidredirecturl?: true
+    webRedirectUrl?: true
     clickCount?: true
     createdAt?: true
   }
@@ -2176,8 +2185,8 @@ export namespace Prisma {
     shortId?: true
     projectId?: true
     deepLink?: true
-    fallbackUrl?: true
-    meta?: true
+    androidredirecturl?: true
+    webRedirectUrl?: true
     clickCount?: true
     createdAt?: true
     _all?: true
@@ -2274,8 +2283,8 @@ export namespace Prisma {
     shortId: string
     projectId: string
     deepLink: string
-    fallbackUrl: string | null
-    meta: JsonValue | null
+    androidredirecturl: string | null
+    webRedirectUrl: string | null
     clickCount: number
     createdAt: Date
     _count: LinkCountAggregateOutputType | null
@@ -2304,8 +2313,8 @@ export namespace Prisma {
     shortId?: boolean
     projectId?: boolean
     deepLink?: boolean
-    fallbackUrl?: boolean
-    meta?: boolean
+    androidredirecturl?: boolean
+    webRedirectUrl?: boolean
     clickCount?: boolean
     createdAt?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
@@ -2316,8 +2325,8 @@ export namespace Prisma {
     shortId?: boolean
     projectId?: boolean
     deepLink?: boolean
-    fallbackUrl?: boolean
-    meta?: boolean
+    androidredirecturl?: boolean
+    webRedirectUrl?: boolean
     clickCount?: boolean
     createdAt?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
@@ -2328,8 +2337,8 @@ export namespace Prisma {
     shortId?: boolean
     projectId?: boolean
     deepLink?: boolean
-    fallbackUrl?: boolean
-    meta?: boolean
+    androidredirecturl?: boolean
+    webRedirectUrl?: boolean
     clickCount?: boolean
     createdAt?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
@@ -2340,13 +2349,13 @@ export namespace Prisma {
     shortId?: boolean
     projectId?: boolean
     deepLink?: boolean
-    fallbackUrl?: boolean
-    meta?: boolean
+    androidredirecturl?: boolean
+    webRedirectUrl?: boolean
     clickCount?: boolean
     createdAt?: boolean
   }
 
-  export type LinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "shortId" | "projectId" | "deepLink" | "fallbackUrl" | "meta" | "clickCount" | "createdAt", ExtArgs["result"]["link"]>
+  export type LinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "shortId" | "projectId" | "deepLink" | "androidredirecturl" | "webRedirectUrl" | "clickCount" | "createdAt", ExtArgs["result"]["link"]>
   export type LinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }
@@ -2367,8 +2376,8 @@ export namespace Prisma {
       shortId: string
       projectId: string
       deepLink: string
-      fallbackUrl: string | null
-      meta: Prisma.JsonValue | null
+      androidredirecturl: string | null
+      webRedirectUrl: string | null
       clickCount: number
       createdAt: Date
     }, ExtArgs["result"]["link"]>
@@ -2799,8 +2808,8 @@ export namespace Prisma {
     readonly shortId: FieldRef<"Link", 'String'>
     readonly projectId: FieldRef<"Link", 'String'>
     readonly deepLink: FieldRef<"Link", 'String'>
-    readonly fallbackUrl: FieldRef<"Link", 'String'>
-    readonly meta: FieldRef<"Link", 'Json'>
+    readonly androidredirecturl: FieldRef<"Link", 'String'>
+    readonly webRedirectUrl: FieldRef<"Link", 'String'>
     readonly clickCount: FieldRef<"Link", 'Int'>
     readonly createdAt: FieldRef<"Link", 'DateTime'>
   }
@@ -3233,11 +3242,11 @@ export namespace Prisma {
 
   export const ProjectScalarFieldEnum: {
     id: 'id',
+    userId: 'userId',
     name: 'name',
-    domain: 'domain',
     androidPkg: 'androidPkg',
     iosBundleId: 'iosBundleId',
-    iosAppStore: 'iosAppStore',
+    iosredirecturl: 'iosredirecturl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -3250,8 +3259,8 @@ export namespace Prisma {
     shortId: 'shortId',
     projectId: 'projectId',
     deepLink: 'deepLink',
-    fallbackUrl: 'fallbackUrl',
-    meta: 'meta',
+    androidredirecturl: 'androidredirecturl',
+    webRedirectUrl: 'webRedirectUrl',
     clickCount: 'clickCount',
     createdAt: 'createdAt'
   };
@@ -3265,14 +3274,6 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -3289,15 +3290,6 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull,
-    AnyNull: typeof AnyNull
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -3348,20 +3340,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3383,11 +3361,11 @@ export namespace Prisma {
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: StringFilter<"Project"> | string
+    userId?: UuidFilter<"Project"> | string
     name?: StringFilter<"Project"> | string
-    domain?: StringFilter<"Project"> | string
     androidPkg?: StringNullableFilter<"Project"> | string | null
     iosBundleId?: StringNullableFilter<"Project"> | string | null
-    iosAppStore?: StringNullableFilter<"Project"> | string | null
+    iosredirecturl?: StringNullableFilter<"Project"> | string | null
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
     links?: LinkListRelationFilter
@@ -3395,11 +3373,11 @@ export namespace Prisma {
 
   export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
+    userId?: SortOrder
     name?: SortOrder
-    domain?: SortOrder
     androidPkg?: SortOrderInput | SortOrder
     iosBundleId?: SortOrderInput | SortOrder
-    iosAppStore?: SortOrderInput | SortOrder
+    iosredirecturl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     links?: LinkOrderByRelationAggregateInput
@@ -3410,11 +3388,11 @@ export namespace Prisma {
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
+    userId?: UuidFilter<"Project"> | string
     name?: StringFilter<"Project"> | string
-    domain?: StringFilter<"Project"> | string
     androidPkg?: StringNullableFilter<"Project"> | string | null
     iosBundleId?: StringNullableFilter<"Project"> | string | null
-    iosAppStore?: StringNullableFilter<"Project"> | string | null
+    iosredirecturl?: StringNullableFilter<"Project"> | string | null
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
     links?: LinkListRelationFilter
@@ -3422,11 +3400,11 @@ export namespace Prisma {
 
   export type ProjectOrderByWithAggregationInput = {
     id?: SortOrder
+    userId?: SortOrder
     name?: SortOrder
-    domain?: SortOrder
     androidPkg?: SortOrderInput | SortOrder
     iosBundleId?: SortOrderInput | SortOrder
-    iosAppStore?: SortOrderInput | SortOrder
+    iosredirecturl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ProjectCountOrderByAggregateInput
@@ -3439,11 +3417,11 @@ export namespace Prisma {
     OR?: ProjectScalarWhereWithAggregatesInput[]
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Project"> | string
+    userId?: UuidWithAggregatesFilter<"Project"> | string
     name?: StringWithAggregatesFilter<"Project"> | string
-    domain?: StringWithAggregatesFilter<"Project"> | string
     androidPkg?: StringNullableWithAggregatesFilter<"Project"> | string | null
     iosBundleId?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    iosAppStore?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    iosredirecturl?: StringNullableWithAggregatesFilter<"Project"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
   }
@@ -3456,8 +3434,8 @@ export namespace Prisma {
     shortId?: StringFilter<"Link"> | string
     projectId?: StringFilter<"Link"> | string
     deepLink?: StringFilter<"Link"> | string
-    fallbackUrl?: StringNullableFilter<"Link"> | string | null
-    meta?: JsonNullableFilter<"Link">
+    androidredirecturl?: StringNullableFilter<"Link"> | string | null
+    webRedirectUrl?: StringNullableFilter<"Link"> | string | null
     clickCount?: IntFilter<"Link"> | number
     createdAt?: DateTimeFilter<"Link"> | Date | string
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
@@ -3468,8 +3446,8 @@ export namespace Prisma {
     shortId?: SortOrder
     projectId?: SortOrder
     deepLink?: SortOrder
-    fallbackUrl?: SortOrderInput | SortOrder
-    meta?: SortOrderInput | SortOrder
+    androidredirecturl?: SortOrderInput | SortOrder
+    webRedirectUrl?: SortOrderInput | SortOrder
     clickCount?: SortOrder
     createdAt?: SortOrder
     project?: ProjectOrderByWithRelationInput
@@ -3483,8 +3461,8 @@ export namespace Prisma {
     NOT?: LinkWhereInput | LinkWhereInput[]
     projectId?: StringFilter<"Link"> | string
     deepLink?: StringFilter<"Link"> | string
-    fallbackUrl?: StringNullableFilter<"Link"> | string | null
-    meta?: JsonNullableFilter<"Link">
+    androidredirecturl?: StringNullableFilter<"Link"> | string | null
+    webRedirectUrl?: StringNullableFilter<"Link"> | string | null
     clickCount?: IntFilter<"Link"> | number
     createdAt?: DateTimeFilter<"Link"> | Date | string
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
@@ -3495,8 +3473,8 @@ export namespace Prisma {
     shortId?: SortOrder
     projectId?: SortOrder
     deepLink?: SortOrder
-    fallbackUrl?: SortOrderInput | SortOrder
-    meta?: SortOrderInput | SortOrder
+    androidredirecturl?: SortOrderInput | SortOrder
+    webRedirectUrl?: SortOrderInput | SortOrder
     clickCount?: SortOrder
     createdAt?: SortOrder
     _count?: LinkCountOrderByAggregateInput
@@ -3514,19 +3492,19 @@ export namespace Prisma {
     shortId?: StringWithAggregatesFilter<"Link"> | string
     projectId?: StringWithAggregatesFilter<"Link"> | string
     deepLink?: StringWithAggregatesFilter<"Link"> | string
-    fallbackUrl?: StringNullableWithAggregatesFilter<"Link"> | string | null
-    meta?: JsonNullableWithAggregatesFilter<"Link">
+    androidredirecturl?: StringNullableWithAggregatesFilter<"Link"> | string | null
+    webRedirectUrl?: StringNullableWithAggregatesFilter<"Link"> | string | null
     clickCount?: IntWithAggregatesFilter<"Link"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Link"> | Date | string
   }
 
   export type ProjectCreateInput = {
     id?: string
+    userId: string
     name: string
-    domain: string
     androidPkg?: string | null
     iosBundleId?: string | null
-    iosAppStore?: string | null
+    iosredirecturl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     links?: LinkCreateNestedManyWithoutProjectInput
@@ -3534,11 +3512,11 @@ export namespace Prisma {
 
   export type ProjectUncheckedCreateInput = {
     id?: string
+    userId: string
     name: string
-    domain: string
     androidPkg?: string | null
     iosBundleId?: string | null
-    iosAppStore?: string | null
+    iosredirecturl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     links?: LinkUncheckedCreateNestedManyWithoutProjectInput
@@ -3546,11 +3524,11 @@ export namespace Prisma {
 
   export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    domain?: StringFieldUpdateOperationsInput | string
     androidPkg?: NullableStringFieldUpdateOperationsInput | string | null
     iosBundleId?: NullableStringFieldUpdateOperationsInput | string | null
-    iosAppStore?: NullableStringFieldUpdateOperationsInput | string | null
+    iosredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     links?: LinkUpdateManyWithoutProjectNestedInput
@@ -3558,11 +3536,11 @@ export namespace Prisma {
 
   export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    domain?: StringFieldUpdateOperationsInput | string
     androidPkg?: NullableStringFieldUpdateOperationsInput | string | null
     iosBundleId?: NullableStringFieldUpdateOperationsInput | string | null
-    iosAppStore?: NullableStringFieldUpdateOperationsInput | string | null
+    iosredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     links?: LinkUncheckedUpdateManyWithoutProjectNestedInput
@@ -3570,33 +3548,33 @@ export namespace Prisma {
 
   export type ProjectCreateManyInput = {
     id?: string
+    userId: string
     name: string
-    domain: string
     androidPkg?: string | null
     iosBundleId?: string | null
-    iosAppStore?: string | null
+    iosredirecturl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProjectUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    domain?: StringFieldUpdateOperationsInput | string
     androidPkg?: NullableStringFieldUpdateOperationsInput | string | null
     iosBundleId?: NullableStringFieldUpdateOperationsInput | string | null
-    iosAppStore?: NullableStringFieldUpdateOperationsInput | string | null
+    iosredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    domain?: StringFieldUpdateOperationsInput | string
     androidPkg?: NullableStringFieldUpdateOperationsInput | string | null
     iosBundleId?: NullableStringFieldUpdateOperationsInput | string | null
-    iosAppStore?: NullableStringFieldUpdateOperationsInput | string | null
+    iosredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3604,8 +3582,8 @@ export namespace Prisma {
   export type LinkCreateInput = {
     shortId: string
     deepLink: string
-    fallbackUrl?: string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: string | null
+    webRedirectUrl?: string | null
     clickCount?: number
     createdAt?: Date | string
     project: ProjectCreateNestedOneWithoutLinksInput
@@ -3616,8 +3594,8 @@ export namespace Prisma {
     shortId: string
     projectId: string
     deepLink: string
-    fallbackUrl?: string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: string | null
+    webRedirectUrl?: string | null
     clickCount?: number
     createdAt?: Date | string
   }
@@ -3625,8 +3603,8 @@ export namespace Prisma {
   export type LinkUpdateInput = {
     shortId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     project?: ProjectUpdateOneRequiredWithoutLinksNestedInput
@@ -3637,8 +3615,8 @@ export namespace Prisma {
     shortId?: StringFieldUpdateOperationsInput | string
     projectId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3648,8 +3626,8 @@ export namespace Prisma {
     shortId: string
     projectId: string
     deepLink: string
-    fallbackUrl?: string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: string | null
+    webRedirectUrl?: string | null
     clickCount?: number
     createdAt?: Date | string
   }
@@ -3657,8 +3635,8 @@ export namespace Prisma {
   export type LinkUpdateManyMutationInput = {
     shortId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3668,8 +3646,8 @@ export namespace Prisma {
     shortId?: StringFieldUpdateOperationsInput | string
     projectId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3687,6 +3665,18 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -3732,33 +3722,33 @@ export namespace Prisma {
 
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     name?: SortOrder
-    domain?: SortOrder
     androidPkg?: SortOrder
     iosBundleId?: SortOrder
-    iosAppStore?: SortOrder
+    iosredirecturl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ProjectMaxOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     name?: SortOrder
-    domain?: SortOrder
     androidPkg?: SortOrder
     iosBundleId?: SortOrder
-    iosAppStore?: SortOrder
+    iosredirecturl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     name?: SortOrder
-    domain?: SortOrder
     androidPkg?: SortOrder
     iosBundleId?: SortOrder
-    iosAppStore?: SortOrder
+    iosredirecturl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3776,6 +3766,21 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
@@ -3823,29 +3828,6 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type ProjectScalarRelationFilter = {
     is?: ProjectWhereInput
@@ -3857,8 +3839,8 @@ export namespace Prisma {
     shortId?: SortOrder
     projectId?: SortOrder
     deepLink?: SortOrder
-    fallbackUrl?: SortOrder
-    meta?: SortOrder
+    androidredirecturl?: SortOrder
+    webRedirectUrl?: SortOrder
     clickCount?: SortOrder
     createdAt?: SortOrder
   }
@@ -3873,7 +3855,8 @@ export namespace Prisma {
     shortId?: SortOrder
     projectId?: SortOrder
     deepLink?: SortOrder
-    fallbackUrl?: SortOrder
+    androidredirecturl?: SortOrder
+    webRedirectUrl?: SortOrder
     clickCount?: SortOrder
     createdAt?: SortOrder
   }
@@ -3883,7 +3866,8 @@ export namespace Prisma {
     shortId?: SortOrder
     projectId?: SortOrder
     deepLink?: SortOrder
-    fallbackUrl?: SortOrder
+    androidredirecturl?: SortOrder
+    webRedirectUrl?: SortOrder
     clickCount?: SortOrder
     createdAt?: SortOrder
   }
@@ -3907,32 +3891,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type LinkCreateNestedManyWithoutProjectInput = {
@@ -4025,6 +3983,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -4076,6 +4045,20 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4146,35 +4129,12 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type LinkCreateWithoutProjectInput = {
     shortId: string
     deepLink: string
-    fallbackUrl?: string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: string | null
+    webRedirectUrl?: string | null
     clickCount?: number
     createdAt?: Date | string
   }
@@ -4183,8 +4143,8 @@ export namespace Prisma {
     id?: number
     shortId: string
     deepLink: string
-    fallbackUrl?: string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: string | null
+    webRedirectUrl?: string | null
     clickCount?: number
     createdAt?: Date | string
   }
@@ -4223,30 +4183,30 @@ export namespace Prisma {
     shortId?: StringFilter<"Link"> | string
     projectId?: StringFilter<"Link"> | string
     deepLink?: StringFilter<"Link"> | string
-    fallbackUrl?: StringNullableFilter<"Link"> | string | null
-    meta?: JsonNullableFilter<"Link">
+    androidredirecturl?: StringNullableFilter<"Link"> | string | null
+    webRedirectUrl?: StringNullableFilter<"Link"> | string | null
     clickCount?: IntFilter<"Link"> | number
     createdAt?: DateTimeFilter<"Link"> | Date | string
   }
 
   export type ProjectCreateWithoutLinksInput = {
     id?: string
+    userId: string
     name: string
-    domain: string
     androidPkg?: string | null
     iosBundleId?: string | null
-    iosAppStore?: string | null
+    iosredirecturl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProjectUncheckedCreateWithoutLinksInput = {
     id?: string
+    userId: string
     name: string
-    domain: string
     androidPkg?: string | null
     iosBundleId?: string | null
-    iosAppStore?: string | null
+    iosredirecturl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4269,22 +4229,22 @@ export namespace Prisma {
 
   export type ProjectUpdateWithoutLinksInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    domain?: StringFieldUpdateOperationsInput | string
     androidPkg?: NullableStringFieldUpdateOperationsInput | string | null
     iosBundleId?: NullableStringFieldUpdateOperationsInput | string | null
-    iosAppStore?: NullableStringFieldUpdateOperationsInput | string | null
+    iosredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectUncheckedUpdateWithoutLinksInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    domain?: StringFieldUpdateOperationsInput | string
     androidPkg?: NullableStringFieldUpdateOperationsInput | string | null
     iosBundleId?: NullableStringFieldUpdateOperationsInput | string | null
-    iosAppStore?: NullableStringFieldUpdateOperationsInput | string | null
+    iosredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4293,8 +4253,8 @@ export namespace Prisma {
     id?: number
     shortId: string
     deepLink: string
-    fallbackUrl?: string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: string | null
+    webRedirectUrl?: string | null
     clickCount?: number
     createdAt?: Date | string
   }
@@ -4302,8 +4262,8 @@ export namespace Prisma {
   export type LinkUpdateWithoutProjectInput = {
     shortId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4312,8 +4272,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     shortId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4322,8 +4282,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     shortId?: StringFieldUpdateOperationsInput | string
     deepLink?: StringFieldUpdateOperationsInput | string
-    fallbackUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    meta?: NullableJsonNullValueInput | InputJsonValue
+    androidredirecturl?: NullableStringFieldUpdateOperationsInput | string | null
+    webRedirectUrl?: NullableStringFieldUpdateOperationsInput | string | null
     clickCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

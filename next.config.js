@@ -1,11 +1,13 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: false, // disable app/ router if you're using pages/
+  async rewrites() {
+    return [
+      {
+        source: "/s/:shortId",
+        destination: "/api/s/:shortId",
+      },
+    ];
   },
-  // Tell Next.js where to look for pages
-  dir: './src'
-}
+};
 
-module.exports = nextConfig;
+export default nextConfig;
